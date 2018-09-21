@@ -43,7 +43,6 @@ def quote_page(br, twain_url):
 
     with open('./output.txt', 'w') as outfile:
         json.dump({"quote": quote_list}, outfile)
-    print(quote_list)
     return quote_list
 
 # get_quotes()

@@ -1,3 +1,8 @@
+To run executable if you are unfamiliar with bash:
+
+1. open dist/expedia_ui/expedia_ui.exe
+
+
 To run file via bash or cmd prompt:
 
 1. Python3.6 used for testing

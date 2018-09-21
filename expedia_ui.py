@@ -15,6 +15,15 @@ def get_goodread(button):
     Check to see if the user submitted email and password are correct
     """
     listbox.delete(0, tk.END)
+    quote_list = good_read.get_quotes(e1.get(), e2.get())
+    for item in quote_list:
+        listbox.insert(tk.END, item["quote"])
+
+def get_login(button):
+    """
+    Retrieve to see if login was successful
+    """
+    listbox.delete(0, tk.END)
     url = 'https://www.goodreads.com/'
     br = good_read.open_page(url)
     login_success = good_read.user_login(br, e1.get(), e2.get())
@@ -22,9 +31,6 @@ def get_goodread(button):
         listbox.insert(tk.END, "You successfully logged In")
     else:
         listbox.insert(tk.END, "The email/password you input is not valid")
-    quote_list = good_read.get_quotes(e1.get(), e2.get())
-    for item in quote_list:
-        listbox.insert(tk.END, item["quote"])
 
 """
 Initialized the GUI and all the buttons and fields
@@ -46,6 +52,9 @@ L2.pack()
 e2.pack()
 
 listbox = tk.Listbox(root)
+button3 = tk.Button(root, text="Check Login")
+button3.pack()
+button3.bind("<Button-1>", get_login)
 button2 = tk.Button(root, text="Get 10 most liked Mark Twain Quotes")
 button2.pack()
 button2.bind("<Button-1>", get_goodread)
